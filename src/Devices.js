@@ -4,6 +4,13 @@ function Devices(props) {
   return (
     <div className="Home">
       <h2>Admin > Devices</h2>
+
+      <button>Add Device</button>
+
+      <ul>
+        <li>Device Name edit delete</li>
+        <li>Device Name edit delete</li>
+      </ul>
     </div>
   );
 }
