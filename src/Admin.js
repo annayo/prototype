@@ -9,7 +9,7 @@ import Devices from './Devices';
 import DeviceTypes from './DeviceTypes';
 import Controls from './Controls';
 
-function Home(props) {
+function Admin(props) {
   return (
     <Router>
       <div className="Admin">
@@ -24,10 +24,10 @@ function Home(props) {
 
         <Route exact path="/admin/devices" component={Devices}/>
         <Route exact path="/admin/device-types" component={DeviceTypes}/>
-        <Route exact path="/admin/controls" component={Controls}/>
+        <Route path="/admin/controls" render={()=> <Controls {...props} />}/>
       </div>
     </Router>
   );
 }
 
-export default Home;
+export default Admin;
