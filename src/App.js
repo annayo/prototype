@@ -4,7 +4,7 @@ import {
   Route,
   Link,
   Redirect
-} from 'react-router-dom'
+} from 'react-router-dom';
 import Home from './Home';
 import Admin from './Admin';
 import './App.css';
