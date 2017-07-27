@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import AppState from './AppState';
-import registerServiceWorker from './registerServiceWorker';
+import registerServiceWorker from './helpers/registerServiceWorker';
 
 ReactDOM.render(
   <AppState>
