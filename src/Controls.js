@@ -31,16 +31,18 @@ class Controls extends Component {
       <div className="Controls">
         <h2>Admin > Controls</h2>
         <button onClick={this.addControl}>Add Control</button>
-        {
-          this.props.appState.controls.map((item, i) => {
-            return <Control
-                      key={item.id}
-                      id={item.id}
-                      name={item.name}
-                      onRemoveControl={this.removeControl}
-                    />
-          })
-        }
+        <ul>
+          {
+            this.props.appState.controls.map((item, i) => {
+              return <Control
+                        key={item.id}
+                        id={item.id}
+                        name={item.name}
+                        onRemoveControl={this.removeControl}
+                      />
+            })
+          }
+        </ul>
       </div>
     );
   }
