@@ -14,7 +14,7 @@ function AddControl(props) {
   return (
     <form onSubmit={onAdd}>
       <input type="text" placeholder="Control name" name="name" defaultValue={name} />
-      <select name="type" value={type}>
+      <select name="type" defaultValue={type}>
         <option value="switch">Switch</option>
         <option value="slider">Slider</option>
         <option value="select">Select</option>
