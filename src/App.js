@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Route,
   Link,
-  Redirect
+  Switch
 } from 'react-router-dom';
 import routes from './routes';
 import './App.css';
@@ -18,18 +18,19 @@ class App extends Component {
       <Router>
         <div>
           <ul>
-            {routes.map((route, i) => (
-              <li key={i}><Link to={route.path}>{route.name}</Link></li>
-            ))}
+            <li><Link to="/">Home</Link></li>
+            <li><Link to="/admin">Admin</Link></li>
           </ul>
 
           <hr/>
 
-          {routes.map((route, i) => (
-            <Route key={i} path={route.path} render={() => (
-              <route.component {...this.props} routes={route.routes} />
-            )}/>
-          ))}
+          <Switch>
+            {routes.map((route, i) => (
+              <Route exact={route.exact} key={i} path={route.path} render={(routeProps) => (
+                <route.component routes={route.routes} {...this.props} {...routeProps} />
+              )}/>
+            ))}
+          </Switch>
         </div>
       </Router>
     );
