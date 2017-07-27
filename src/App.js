@@ -5,24 +5,31 @@ import {
   Link,
   Redirect
 } from 'react-router-dom';
-import Home from './Home';
-import Admin from './Admin';
+import routes from './routes';
 import './App.css';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <Router>
         <div>
           <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/admin">Admin</Link></li>
+            {routes.map((route, i) => (
+              <li key={i}><Link to={route.path}>{route.name}</Link></li>
+            ))}
           </ul>
 
           <hr/>
 
-          <Route exact path="/" component={Home}/>
-          <Route exact path="/admin" component={Admin}/>
+          {routes.map((route, i) => (
+            <Route key={i} path={route.path} render={() => (
+              <route.component {...this.props} routes={route.routes} />
+            )}/>
+          ))}
         </div>
       </Router>
     );

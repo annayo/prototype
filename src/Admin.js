@@ -5,6 +5,7 @@ import {
   Link,
   Redirect
 } from 'react-router-dom';
+import routes from './routes';
 import Devices from './Devices';
 import DeviceTypes from './DeviceTypes';
 import Controls from './Controls';
@@ -15,16 +16,18 @@ function Admin(props) {
       <div className="Admin">
         <h2>Admin</h2>
         <ul>
-          <li><Link to="/admin/devices">Devices</Link></li>
-          <li><Link to="/admin/device-types">Device Types</Link></li>
-          <li><Link to="/admin/controls">Controls</Link></li>
+          {props.routes.map((route, i) => (
+            <li key={i}><Link to={route.path}>{route.name}</Link></li>
+          ))}
         </ul>
 
         <hr/>
 
-        <Route exact path="/admin/devices" component={Devices}/>
-        <Route exact path="/admin/device-types" component={DeviceTypes}/>
-        <Route path="/admin/controls" render={()=> <Controls {...props} />}/>
+        {props.routes.map((route, i) => (
+          <Route key={i} path={route.path} render={() => (
+            <route.component {...props} routes={route.routes} />
+          )}/>
+        ))}
       </div>
     </Router>
   );
