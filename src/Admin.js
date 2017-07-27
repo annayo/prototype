@@ -15,16 +15,16 @@ function Home(props) {
       <div className="Admin">
         <h2>Admin</h2>
         <ul>
-          <li><Link to="/devices">Devices</Link></li>
-          <li><Link to="/device-types">Device Types</Link></li>
-          <li><Link to="/controls">Controls</Link></li>
+          <li><Link to="/admin/devices">Devices</Link></li>
+          <li><Link to="/admin/device-types">Device Types</Link></li>
+          <li><Link to="/admin/controls">Controls</Link></li>
         </ul>
 
         <hr/>
 
-        <Route exact path="/devices" component={Devices}/>
-        <Route exact path="/device-types" component={DeviceTypes}/>
-        <Route exact path="/controls" component={Controls}/>
+        <Route exact path="/admin/devices" component={Devices}/>
+        <Route exact path="/admin/device-types" component={DeviceTypes}/>
+        <Route exact path="/admin/controls" component={Controls}/>
       </div>
     </Router>
   );
