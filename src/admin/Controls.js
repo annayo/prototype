@@ -13,8 +13,10 @@ class Controls extends Component {
     }
 
     this.addControl = this.addControl.bind(this);
+    this.editControl = this.editControl.bind(this);
     this.removeControl = this.removeControl.bind(this);
     this.toggleAddPanel = this.toggleAddPanel.bind(this);
+    this.toggleEditControl = this.toggleEditControl.bind(this);
   }
 
   addControl(e) {
@@ -33,10 +35,35 @@ class Controls extends Component {
     });
   }
 
+  editControl(e) {
+    e.preventDefault();
+
+    const inputs = e.currentTarget.children;
+    const id = inputs.id.value;
+    const item = {
+      id: id,
+      name: inputs.name.value,
+      type: inputs.type.value
+    };
+    const itemIndex = this.props.appState.controls.
+                      map((item, i) => ({ id: item.id, index: i })).
+                      filter((item) => item.id === id)[0].index;
+
+    this.props.setAppState({
+      controls: [...this.props.appState.controls.slice(0, itemIndex), item, ...this.props.appState.controls.slice(itemIndex + 1)]
+    });
+
+    this.toggleEditControl();
+  }
+
   removeControl(id) {
     this.props.setAppState({
       controls: this.props.appState.controls.filter((item) => item.id !== id)
     });
+  }
+
+  toggleEditControl(id) {
+    this.setState({ editControlID: id ? id : null });
   }
 
   toggleAddPanel() {
@@ -64,6 +91,10 @@ class Controls extends Component {
                         id={item.id}
                         name={item.name}
                         type={item.type}
+                        isEditing={this.state.editControlID === item.id}
+                        onEditToggle={this.toggleEditControl}
+                        onEditCancel={this.toggleEditControl}
+                        onEdit={this.editControl}
                         onRemove={this.removeControl}
                       />
             })

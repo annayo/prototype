@@ -8,15 +8,26 @@ function Control(props) {
     type,
     isEditing,
     onEdit,
+    onEditToggle,
     onEditCancel,
-    onEditDone,
     onRemove
   } = props;
 
   return (
     <li>
-      {name} {type}
-      <span onClick={()=> onEdit(id)}>[ edit ]</span>
+      { isEditing &&
+        <AddControl
+          id={id}
+          name={name}
+          type={type}
+          onAdd={onEdit}
+          onCancel={onEditCancel}
+        />
+      }
+      { !isEditing &&
+        <span>{name} {type}</span>
+      }
+      <span onClick={()=> onEditToggle(id)}>[ edit ]</span>
       <span onClick={()=> onRemove(id)}>[ x ]</span>
     </li>
   );
