@@ -1,35 +1,27 @@
 import React from 'react';
 import {
-  BrowserRouter as Router,
   Route,
-  Link,
-  Redirect
+  Link
 } from 'react-router-dom';
-import routes from './routes';
-import Devices from './Devices';
-import DeviceTypes from './DeviceTypes';
-import Controls from './Controls';
 
-function Admin(props) {
+const Admin = (props) => {
   return (
-    <Router>
-      <div className="Admin">
-        <h2>Admin</h2>
-        <ul>
-          {props.routes.map((route, i) => (
-            <li key={i}><Link to={route.path}>{route.name}</Link></li>
-          ))}
-        </ul>
-
-        <hr/>
-
+    <div className="Admin">
+      <h2>Admin</h2>
+      <ul>
         {props.routes.map((route, i) => (
-          <Route key={i} path={route.path} render={() => (
-            <route.component {...props} routes={route.routes} />
-          )}/>
+          <li key={i}><Link to={route.path}>{route.name}</Link></li>
         ))}
-      </div>
-    </Router>
+      </ul>
+
+      <hr/>
+
+      {props.routes.map((route, i) => (
+        <Route exact={route.exact} key={i} path={route.path} render={() => (
+          <route.component routes={route.routes} {...props} />
+        )}/>
+      ))}
+    </div>
   );
 }
 
