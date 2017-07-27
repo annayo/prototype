@@ -4,11 +4,12 @@ function Control(props) {
   const {
     id,
     name,
+    type,
     onRemoveControl
   } = props;
 
   return (
-    <li>{name} <span onClick={()=> onRemoveControl(id)}>remove</span></li>
+    <li>{name} {type} <span onClick={()=> onRemoveControl(id)}>[ x ]</span></li>
   );
 }
 
