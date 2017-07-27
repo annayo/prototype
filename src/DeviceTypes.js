@@ -25,7 +25,7 @@ class DeviceTypes extends Component {
     const control = inputs.control.value; // error if no controls have been added
 
     this.props.setAppState({
-      controls: this.props.appState.controls.concat({
+      deviceTypes: this.props.appState.deviceTypes.concat({
         id: v4(),
         type: type,
         endpoint: endpoint,
