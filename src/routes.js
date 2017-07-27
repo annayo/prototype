@@ -10,12 +10,7 @@ const routes = [
     path: '/',
     component: Home,
     name: 'Home',
-    routes: [
-      {
-        path: '/:device-name',
-        component: Device
-      }
-    ]
+    exact: true
   },
   {
     path: '/admin',
@@ -38,6 +33,10 @@ const routes = [
         name: 'Controls'
       }
     ]
+  },
+  {
+    path: '/:name',
+    component: Device
   }
 ];
 
