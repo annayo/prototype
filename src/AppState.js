@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
+import { loadState, saveState } from './helpers/localStorage';
 
 class AppState extends Component {
   constructor(props) {
     super(props);
-    this.state = {
+    this.state = loadState() || {
       devices: [],
       deviceTypes: [],
       controls: []
     };
     this.setAppState = this.setAppState.bind(this);
+  }
+
+  componentWillUpdate(nextProps, nextState) {
+    saveState(nextState);
   }
 
   setAppState(newState, callback) {
