@@ -1,9 +1,9 @@
 import Home from './Home';
 import Admin from './Admin';
 import Device from './Device';
-import Devices from './Devices';
-import DeviceTypes from './DeviceTypes';
-import Controls from './Controls';
+import Devices from './admin/Devices';
+import DeviceTypes from './admin/DeviceTypes';
+import Controls from './admin/Controls';
 
 const routes = [
   {

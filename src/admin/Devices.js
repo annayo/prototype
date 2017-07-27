@@ -2,7 +2,7 @@ import React from 'react';
 
 function Devices(props) {
   return (
-    <div className="Home">
+    <div className="Devices">
       <h2>Admin > Devices</h2>
 
       <button>Add Device</button>

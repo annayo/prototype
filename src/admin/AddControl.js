@@ -2,12 +2,12 @@ import React from 'react';
 
 function AddControl(props) {
   const {
-    onAddControl,
+    onAdd,
     onCancel
   } = props;
 
   return (
-    <form onSubmit={onAddControl}>
+    <form onSubmit={onAdd}>
       <input type="text" placeholder="Control name" name="name" />
       <select name="type">
         <option value="switch">Switch</option>

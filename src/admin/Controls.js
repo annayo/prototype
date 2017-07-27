@@ -3,13 +3,13 @@ import { v4 } from 'node-uuid';
 import Control from './Control';
 import AddControl from './AddControl';
 
-
 class Controls extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      isAddPanelOpen: false
+      isAddPanelOpen: false,
+      editControlID: null
     }
 
     this.addControl = this.addControl.bind(this);
@@ -49,7 +49,7 @@ class Controls extends Component {
         <h2>Admin > Controls</h2>
         { this.state.isAddPanelOpen &&
           <AddControl
-            onAddControl={this.addControl}
+            onAdd={this.addControl}
             onCancel={this.toggleAddPanel}
           />
         }
@@ -64,7 +64,7 @@ class Controls extends Component {
                         id={item.id}
                         name={item.name}
                         type={item.type}
-                        onRemoveControl={this.removeControl}
+                        onRemove={this.removeControl}
                       />
             })
           }
