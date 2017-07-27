@@ -11,7 +11,8 @@ const routes = [
     component: Home,
     name: 'Home',
     routes: [
-      { path: '/:device-name',
+      {
+        path: '/:device-name',
         component: Device
       }
     ]
@@ -26,11 +27,13 @@ const routes = [
         component: Devices,
         name: 'Devices'
       },
-      { path: '/admin/device-types',
+      {
+        path: '/admin/device-types',
         component: DeviceTypes,
         name: 'Device Types'
       },
-      { path: '/admin/controls',
+      {
+        path: '/admin/controls',
         component: Controls,
         name: 'Controls'
       }
