@@ -17,7 +17,7 @@ function AddDeviceType(props) {
       <select name="control">
         {
           controls.map((item, i) => {
-            return <option value={item.id}>{item.name}</option>
+            return <option key={i} value={item.id}>{item.name}</option>
           })
         }
       </select>
