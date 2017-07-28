@@ -66,7 +66,8 @@ class Controls extends Component {
 
   removeDevice(id) {
     this.props.setAppState({
-      devices: this.props.appState.devices.filter((item) => item.id !== id)
+      devices: this.props.appState.devices.filter((item) => item.id !== id),
+      deviceControls: this.props.appState.deviceControls.filter((item) => item.deviceID !== id)
     });
   }
 
