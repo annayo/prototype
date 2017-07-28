@@ -7,7 +7,8 @@ class AppState extends Component {
     this.state = loadState() || {
       devices: [],
       deviceTypes: [],
-      controls: []
+      controls: [],
+      deviceControls: []
     };
     this.setAppState = this.setAppState.bind(this);
   }
