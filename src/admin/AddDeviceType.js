@@ -1,6 +1,8 @@
 import React from 'react';
 
 function AddDeviceType(props) {
+  // TODO: provide link to admin/controls if !controls.length
+
   const {
     id,
     type,
