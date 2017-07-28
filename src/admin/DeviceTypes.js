@@ -8,12 +8,15 @@ class DeviceTypes extends Component {
     super(props);
 
     this.state = {
-      isAddPanelOpen: false
+      isAddPanelOpen: false,
+      editDeviceTypeID: null
     }
 
     this.addDeviceType = this.addDeviceType.bind(this);
+    this.editDeviceType = this.editDeviceType.bind(this);
     this.removeDeviceType = this.removeDeviceType.bind(this);
     this.toggleAddPanel = this.toggleAddPanel.bind(this);
+    this.toggleEditDeviceType = this.toggleEditDeviceType.bind(this);
   }
 
   addDeviceType(e) {
@@ -34,10 +37,36 @@ class DeviceTypes extends Component {
     });
   }
 
+  editDeviceType(e) {
+    e.preventDefault();
+
+    const inputs = e.currentTarget.children;
+    const id = inputs.id.value;
+    const item = {
+      id: id,
+      type: inputs.type.value,
+      endpoint: inputs.endpoint.value,
+      control: inputs.control.value
+    };
+    const itemIndex = this.props.appState.deviceTypes.
+                      map((item, i) => ({ id: item.id, index: i })).
+                      filter((item) => item.id === id)[0].index;
+
+    this.props.setAppState({
+      deviceTypes: [...this.props.appState.deviceTypes.slice(0, itemIndex), item, ...this.props.appState.deviceTypes.slice(itemIndex + 1)]
+    });
+
+    this.toggleEditDeviceType();
+  }
+
   removeDeviceType(id) {
     this.props.setAppState({
       deviceTypes: this.props.appState.deviceTypes.filter((item) => item.id !== id)
     });
+  }
+
+  toggleEditDeviceType(id) {
+    this.setState({ editDeviceTypeID: id ? id : null });
   }
 
   toggleAddPanel() {
@@ -67,6 +96,11 @@ class DeviceTypes extends Component {
                         type={item.type}
                         endpoint={item.endpoint}
                         control={item.control}
+                        controls={this.props.appState.controls}
+                        isEditing={this.state.editDeviceTypeID === item.id}
+                        onEditToggle={this.toggleEditDeviceType}
+                        onEditCancel={this.toggleEditDeviceType}
+                        onEdit={this.editDeviceType}
                         onRemove={this.removeDeviceType}
                       />
             })
