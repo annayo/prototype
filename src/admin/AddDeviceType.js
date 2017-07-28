@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { v4 } from 'node-uuid';
 import AddControlToDeviceType from './AddControlToDeviceType';
 
 class AddDeviceType extends Component {
@@ -7,7 +6,7 @@ class AddDeviceType extends Component {
     super(props);
 
     this.state = {
-      controlIDs: props.controlIDs ? props.controlIDs.split(',') : []
+      controlIDs: props.controlIDs ? props.controlIDs : []
     }
 
     this.addControl = this.addControl.bind(this);
@@ -51,8 +50,9 @@ class AddDeviceType extends Component {
     return (
       <form onSubmit={onAdd}>
         <select name="type" defaultValue={type}>
-          <option value="apple-tv">Apple TV</option>
-          <option value="samgsung-audio">Samsung Audio</option>
+          <option value="Apple TV">Apple TV</option>
+          <option value="Samsung Audio">Samsung Audio</option>
+          <option value="Citrus Light">Citrus Light</option>
         </select>
         <input type="text" placeholder="HTTP Endpoint" name="endpoint" defaultValue={endpoint} />
         <AddControlToDeviceType
