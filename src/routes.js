@@ -35,7 +35,7 @@ const routes = [
     ]
   },
   {
-    path: '/:name',
+    path: '/:slug',
     component: Device
   }
 ];
