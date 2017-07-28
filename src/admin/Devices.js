@@ -22,16 +22,21 @@ class Controls extends Component {
   addDevice(e) {
     e.preventDefault();
 
+    const id = v4();
     const inputs = e.currentTarget.children;
     const name = inputs.name.value;
     const deviceType = inputs.deviceType.value;
+    const deviceTypeControls = this.props.appState.deviceTypes.filter((item, i) => item.id === deviceType)[0];
+    const deviceControls = deviceTypeControls.controlIDs.map((item, i) => ({ deviceID: id, id: item, value: null }));
 
     this.props.setAppState({
       devices: this.props.appState.devices.concat({
-        id: v4(),
+        id: id,
         name: name,
-        deviceType: deviceType
-      })
+        deviceType: deviceType,
+        slug: name.replace(/\s+/g, '-').toLowerCase()
+      }),
+      deviceControls: this.props.appState.deviceControls.concat(deviceControls)
     });
   }
 
@@ -40,10 +45,13 @@ class Controls extends Component {
 
     const inputs = e.currentTarget.children;
     const id = inputs.id.value;
+    const name = inputs.name.value;
+    const deviceType = inputs.deviceType.value;
     const item = {
       id: id,
-      name: inputs.name.value,
-      deviceType: inputs.deviceType.value
+      name: name,
+      deviceType: deviceType,
+      slug: name.replace(/\s+/g, '-').toLowerCase()
     };
     const itemIndex = this.props.appState.devices.
                       map((item, i) => ({ id: item.id, index: i })).
