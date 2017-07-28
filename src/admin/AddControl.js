@@ -9,7 +9,7 @@ function AddControl(props) {
     onCancel
   } = props;
 
-  const submitLabel = name ? 'Update' : 'Add';
+  const submitLabel = id ? 'Update' : 'Add';
 
   return (
     <form onSubmit={onAdd}>
