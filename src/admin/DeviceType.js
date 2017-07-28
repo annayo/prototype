@@ -16,7 +16,8 @@ function DeviceType(props) {
     onRemove
   } = props;
 
-  const controlName = controls.filter((item) => item.id === control)[0].name;
+  const controlItem = controls.filter((item) => item.id === control)[0];
+  const controlName = controlItem ? controlItem.name : null;
 
   return (
     <li>
