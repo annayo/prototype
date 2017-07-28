@@ -31,7 +31,7 @@ function DeviceType(props) {
         />
       }
       { !isEditing &&
-        <span>{type} {endpoint}</span>
+        <span>{type}</span>
       }
       <span onClick={()=> onEditToggle(id)}>[ edit ]</span>
       <span onClick={()=> onRemove(id)}>[ x ]</span>
