@@ -3,18 +3,16 @@ import {
   Route,
   Link
 } from 'react-router-dom';
+import './Admin.css'
 
 const Admin = (props) => {
   return (
-    <div className="Admin">
-      <h2>Admin</h2>
-      <ul>
+    <div className="Admin page-container">
+      <ul className="Admin-nav">
         {props.routes.map((route, i) => (
-          <li key={i}><Link to={route.path}>{route.name}</Link></li>
+          <li key={i}><Link to={route.path}>Manage {route.name}</Link></li>
         ))}
       </ul>
-
-      <hr/>
 
       {props.routes.map((route, i) => (
         <Route exact={route.exact} key={i} path={route.path} render={() => (

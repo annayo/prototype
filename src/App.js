@@ -5,6 +5,7 @@ import {
   Link,
   Switch
 } from 'react-router-dom';
+import { Glyphicon } from 'react-bootstrap';
 import routes from './routes';
 import './App.css';
 
@@ -13,13 +14,16 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/admin">Admin</Link></li>
+          <ul className="App-nav">
+            <li className="App-nav__item">
+              <Glyphicon glyph="list" />
+              <Link className="App-nav__link" to="/">Devices</Link>
+            </li>
+            <li className="App-nav__item App-nav__item--admin">
+              <Glyphicon glyph="cog" />
+              <Link className="App-nav__link" to="/admin">Admin</Link>
+            </li>
           </ul>
-
-          <hr/>
-
           <Switch>
             {routes.map((route, i) => (
               <Route exact={route.exact} key={i} path={route.path} render={(routeProps) => (

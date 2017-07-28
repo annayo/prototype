@@ -1,4 +1,5 @@
 import React from 'react';
+import { Glyphicon } from 'react-bootstrap';
 import AddControl from './AddControl';
 
 function Control(props) {
@@ -14,7 +15,7 @@ function Control(props) {
   } = props;
 
   return (
-    <li>
+    <li className={props.className}>
       { isEditing &&
         <AddControl
           id={id}
@@ -27,8 +28,12 @@ function Control(props) {
       { !isEditing &&
         <span>{name} {type}</span>
       }
-      <span onClick={()=> onEditToggle(id)}>[ edit ]</span>
-      <span onClick={()=> onRemove(id)}>[ x ]</span>
+      { !isEditing &&
+        <div className="btn-row--inline">
+          <button onClick={()=> onEditToggle(id)}><Glyphicon glyph="pencil" /></button>
+          <button onClick={()=> onRemove(id)}><Glyphicon glyph="remove" /></button>
+        </div>
+      }
     </li>
   );
 }

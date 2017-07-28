@@ -1,4 +1,5 @@
 import React from 'react';
+import { Glyphicon } from 'react-bootstrap';
 
 function AddControl(props) {
   const {
@@ -9,12 +10,11 @@ function AddControl(props) {
     onCancel
   } = props;
 
-  const submitLabel = id ? 'Update' : 'Add';
-
   return (
     <form onSubmit={onAdd}>
       <input type="text" placeholder="Control name" name="name" defaultValue={name} />
       <select name="type" defaultValue={type}>
+        <option value={null}>--- Select control type ---</option>
         <option value="switch">Switch</option>
         <option value="slider">Slider</option>
         <option value="select">Select</option>
@@ -22,8 +22,10 @@ function AddControl(props) {
       { id &&
         <input type="hidden" name="id" value={id} />
       }
-      <input type="submit" value={submitLabel} />
-      <span onClick={onCancel}>Close</span>
+      <div className="btn-row--inline">
+        <button type="submit"><Glyphicon glyph="ok" /></button>
+        <span className="btn btn--close" onClick={onCancel}>Close</span>
+      </div>
     </form>
   );
 }

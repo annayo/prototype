@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { v4 } from 'node-uuid';
+import { Glyphicon } from 'react-bootstrap';
 import Control from './Control';
 import AddControl from './AddControl';
 
@@ -81,12 +82,13 @@ class Controls extends Component {
           />
         }
         { !this.state.isAddPanelOpen &&
-          <button onClick={this.toggleAddPanel}>Add Control</button>
+          <button onClick={this.toggleAddPanel}><Glyphicon glyph="plus" /> Add Control</button>
         }
-        <ul>
+        <ul className="list--admin">
           {
             this.props.appState.controls.map((item, i) => {
               return <Control
+                        className="list--admin__item"
                         key={item.id}
                         id={item.id}
                         name={item.name}

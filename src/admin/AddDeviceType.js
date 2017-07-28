@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Glyphicon } from 'react-bootstrap';
 import AddControlToDeviceType from './AddControlToDeviceType';
 
 class AddDeviceType extends Component {
@@ -43,37 +44,43 @@ class AddDeviceType extends Component {
       onCancel
     } = this.props;
 
-    const submitLabel = id ? 'Update' : 'Add';
     const controlIDs = this.state.controlIDs.join(',');
     const controlsMetadata = this.getControlsMetadata();
 
     return (
       <form onSubmit={onAdd}>
         <select name="type" defaultValue={type}>
+          <option value={null}>--- Select device type ---</option>
           <option value="Apple TV">Apple TV</option>
           <option value="Samsung Audio">Samsung Audio</option>
           <option value="Sony Audio">Sony Audio</option>
           <option value="Citrus Lights">Citrus Lights</option>
         </select>
-        <input type="text" placeholder="HTTP Endpoint" name="endpoint" defaultValue={endpoint} />
         <AddControlToDeviceType
           controls={controls}
           onAdd={this.addControl}
         />
-        {
-          controlsMetadata.map((item, i) => {
-            return <div key={i}>
-                    <span>{item.name}</span> | <span>{item.type}</span>
-                    <span onClick={()=> this.removeControl(item.id)}>[ x ]</span>
-                  </div>
-          })
-        }
+        <ul className="list--edit">
+          {
+            controlsMetadata.map((item, i) => {
+              return <li key={i} className="list--edit__item">
+                      <span>{item.name}</span> | <span>{item.type}</span>
+                      <div className="btn-row--inline">
+                        <button onClick={()=> this.removeControl(item.id)}><Glyphicon glyph="remove" /></button>
+                      </div>
+                    </li>
+            })
+          }
+        </ul>
         { id &&
           <input type="hidden" name="id" value={id} />
         }
+        <input type="hidden" name="endpoint" defaultValue={endpoint} />
         <input type="hidden" name="controlIDs" value={controlIDs} />
-        <input type="submit" value={submitLabel} />
-        <span onClick={onCancel}>Close</span>
+        <div className="btn-row">
+          <button type="submit"><Glyphicon glyph="ok" /></button>
+          <span className="btn btn--close" onClick={onCancel}>Close</span>
+        </div>
       </form>
     );
   }

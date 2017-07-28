@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { v4 } from 'node-uuid';
+import { Glyphicon } from 'react-bootstrap';
 import DeviceType from './DeviceType';
 import AddDeviceType from './AddDeviceType';
 
@@ -87,12 +88,13 @@ class DeviceTypes extends Component {
           />
         }
         { !this.state.isAddPanelOpen &&
-          <button onClick={this.toggleAddPanel}>Add Device Type</button>
+          <button onClick={this.toggleAddPanel}><Glyphicon glyph="plus" /> Add Device Type</button>
         }
-        <ul>
+        <ul className="list--admin">
           {
             this.props.appState.deviceTypes.map((item, i) => {
               return <DeviceType
+                        className="list--admin__item"
                         key={item.id}
                         id={item.id}
                         type={item.type}

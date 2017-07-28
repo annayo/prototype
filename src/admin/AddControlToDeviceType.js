@@ -7,16 +7,14 @@ function AddControlToDeviceType(props) {
   } = props;
 
   return (
-    <div>
-      <select name="control" onChange={onAdd}>
-        <option value={null}>--- Add a control ---</option>
-        {
-          controls.map((item, i) => {
-            return <option key={i} value={item.id}>{item.name}</option>
-          })
-        }
-      </select>
-    </div>
+    <select className="select--block" name="control" onChange={onAdd}>
+      <option value={null}>--- Select control ---</option>
+      {
+        controls.map((item, i) => {
+          return <option key={i} value={item.id}>{item.name}</option>
+        })
+      }
+    </select>
   );
 }
 

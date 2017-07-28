@@ -1,4 +1,5 @@
 import React from 'react';
+import { Glyphicon } from 'react-bootstrap';
 
 function AddDevice(props) {
   const {
@@ -10,12 +11,11 @@ function AddDevice(props) {
     onCancel
   } = props;
 
-  const submitLabel = id ? 'Update' : 'Add';
-
   return (
-    <form onSubmit={onAdd}>
+    <form onSubmit={onAdd} className="form--add">
       <input type="text" placeholder="Device name" name="name" defaultValue={name} />
       <select name="deviceType" defaultValue={deviceType}>
+        <option value={null}>--- Select device type ---</option>
         {
           deviceTypes.map((item, i) => {
             return <option key={i} value={item.id}>{item.type}</option>
@@ -25,8 +25,10 @@ function AddDevice(props) {
       { id &&
         <input type="hidden" name="id" value={id} />
       }
-      <input type="submit" value={submitLabel} />
-      <span onClick={onCancel}>Close</span>
+      <div className="btn-row--inline">
+        <button type="submit"><Glyphicon glyph="ok" /></button>
+        <span className="btn btn--close" onClick={onCancel}>Close</span>
+      </div>
     </form>
   );
 }

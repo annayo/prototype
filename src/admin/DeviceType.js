@@ -1,4 +1,5 @@
 import React from 'react';
+import { Glyphicon } from 'react-bootstrap';
 import AddDeviceType from './AddDeviceType';
 
 function DeviceType(props) {
@@ -17,7 +18,7 @@ function DeviceType(props) {
   } = props;
 
   return (
-    <li>
+    <li className={props.className}>
       { isEditing &&
         <AddDeviceType
           id={id}
@@ -33,8 +34,12 @@ function DeviceType(props) {
       { !isEditing &&
         <span>{type}</span>
       }
-      <span onClick={()=> onEditToggle(id)}>[ edit ]</span>
-      <span onClick={()=> onRemove(id)}>[ x ]</span>
+      { !isEditing &&
+        <div className="btn-row--inline">
+          <button onClick={()=> onEditToggle(id)}><Glyphicon glyph="pencil" /></button>
+          <button onClick={()=> onRemove(id)}><Glyphicon glyph="remove" /></button>
+        </div>
+      }
     </li>
   );
 }

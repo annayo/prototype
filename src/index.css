@@ -3,3 +3,77 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+h2 {
+  font-size: 26px;
+  margin-bottom: 15px;
+}
+
+ul {
+  margin: 0;
+  padding: 0 15px 0;
+  list-style: none;
+
+}
+
+.page-container {
+  padding: 20px;
+}
+
+form {
+  display: inline-block;
+  position: relative;
+}
+
+input {
+  margin-right: 8px;
+}
+
+.select--block {
+  display: block;
+  margin: 10px 0;
+}
+
+button,
+.btn {
+  margin-right: 5px;
+}
+
+.btn--close {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.btn-row {
+  margin: 5px 0;
+}
+
+.btn-row--inline {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.btn-row--positioned {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.list--edit {
+  padding: 0;
+}
+
+.list--edit__item {
+  margin: 10px 0;
+}
+
+.list--admin {
+  margin: 10px 0;
+  padding: 0;
+}
+
+.list--admin__item {
+  margin: 15px 0;
+  padding-left: 10px;
+  border-left: 2px solid #cbd0d2;
+}
