@@ -52,7 +52,8 @@ class AddDeviceType extends Component {
         <select name="type" defaultValue={type}>
           <option value="Apple TV">Apple TV</option>
           <option value="Samsung Audio">Samsung Audio</option>
-          <option value="Citrus Light">Citrus Light</option>
+          <option value="Sony Audio">Sony Audio</option>
+          <option value="Citrus Lights">Citrus Lights</option>
         </select>
         <input type="text" placeholder="HTTP Endpoint" name="endpoint" defaultValue={endpoint} />
         <AddControlToDeviceType
