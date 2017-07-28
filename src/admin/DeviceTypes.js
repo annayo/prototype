@@ -32,9 +32,11 @@ class DeviceTypes extends Component {
         id: v4(),
         type: type,
         endpoint: endpoint,
-        controlIDs: controlIDs
+        controlIDs: controlIDs.split(',')
       })
     });
+
+    this.toggleAddPanel();
   }
 
   editDeviceType(e) {
@@ -46,7 +48,7 @@ class DeviceTypes extends Component {
       id: id,
       type: inputs.type.value,
       endpoint: inputs.endpoint.value,
-      controlIDs: inputs.controlIDs.value
+      controlIDs: inputs.controlIDs.value.split(',')
     };
     const itemIndex = this.props.appState.deviceTypes.
                       map((item, i) => ({ id: item.id, index: i })).
