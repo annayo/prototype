@@ -25,14 +25,14 @@ class DeviceTypes extends Component {
     const inputs = e.currentTarget.children;
     const type = inputs.type.value;
     const endpoint = inputs.endpoint.value;
-    const control = inputs.control.value; // error if no controls have been added
+    const controlIDs = inputs.controlIDs.value; // error if no controls have been added
 
     this.props.setAppState({
       deviceTypes: this.props.appState.deviceTypes.concat({
         id: v4(),
         type: type,
         endpoint: endpoint,
-        control: control
+        controlIDs: controlIDs
       })
     });
   }
@@ -46,7 +46,7 @@ class DeviceTypes extends Component {
       id: id,
       type: inputs.type.value,
       endpoint: inputs.endpoint.value,
-      control: inputs.control.value
+      controlIDs: inputs.controlIDs.value
     };
     const itemIndex = this.props.appState.deviceTypes.
                       map((item, i) => ({ id: item.id, index: i })).
@@ -95,7 +95,7 @@ class DeviceTypes extends Component {
                         id={item.id}
                         type={item.type}
                         endpoint={item.endpoint}
-                        control={item.control}
+                        controlIDs={item.controlIDs}
                         controls={this.props.appState.controls}
                         isEditing={this.state.editDeviceTypeID === item.id}
                         onEditToggle={this.toggleEditDeviceType}

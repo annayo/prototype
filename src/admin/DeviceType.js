@@ -6,7 +6,7 @@ function DeviceType(props) {
     id,
     name,
     type,
-    control,
+    controlIDs,
     endpoint,
     controls,
     isEditing,
@@ -16,9 +16,6 @@ function DeviceType(props) {
     onRemove
   } = props;
 
-  const controlItem = controls.filter((item) => item.id === control)[0];
-  const controlName = controlItem ? controlItem.name : null;
-
   return (
     <li>
       { isEditing &&
@@ -27,14 +24,14 @@ function DeviceType(props) {
           name={name}
           type={type}
           endpoint={endpoint}
-          control={control}
+          controlIDs={controlIDs}
           controls={controls}
           onAdd={onEdit}
           onCancel={onEditCancel}
         />
       }
       { !isEditing &&
-        <span>{type} {endpoint} {controlName}</span>
+        <span>{type} {endpoint}</span>
       }
       <span onClick={()=> onEditToggle(id)}>[ edit ]</span>
       <span onClick={()=> onRemove(id)}>[ x ]</span>
