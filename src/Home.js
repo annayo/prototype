@@ -9,15 +9,16 @@ const Home = (props) => {
   return (
     <div className="Home">
       <h2>App Home</h2>
-      <ul>
-        <li><Link to="/appletv">Device Name</Link></li>
-      </ul>
+      {
+        props.appState.devices.map((item, i) =>
+          <li key={i}><Link to={`/${item.slug}`}>{item.name}</Link></li>
+        )
+      }
 
       <hr/>
 
-      <Route path={"/:name"} render={(routeProps) => (
-        <Device {...props} {...routeProps} />
-      )}/>
+      <Route path={"/:name"} render={(routeProps) => <Device {...props} {...routeProps} />}
+      />
     </div>
   );
 }
