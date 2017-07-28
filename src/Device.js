@@ -69,6 +69,7 @@ class Device extends Component {
     const deviceControls = appState.deviceControls.filter((item) => item.deviceID === id);
     const mappedControls = deviceControls.map((item, i) => {
       const controls = appState.controls.filter((el, i) => el.id === item.id)[0];
+
       return {
         id: item.id,
         deviceID: item.deviceID,
