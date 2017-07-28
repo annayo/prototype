@@ -4,7 +4,7 @@ function AddDevice(props) {
   const {
     id,
     name,
-    control,
+    deviceType,
     deviceTypes,
     onAdd,
     onCancel
@@ -15,10 +15,10 @@ function AddDevice(props) {
   return (
     <form onSubmit={onAdd}>
       <input type="text" placeholder="Device name" name="name" defaultValue={name} />
-      <select name="control" defaultValue={control}>
+      <select name="deviceType" defaultValue={deviceType}>
         {
           deviceTypes.map((item, i) => {
-            return <option key={i} value={item.id}>{item.name}</option>
+            return <option key={i} value={item.id}>{item.type}</option>
           })
         }
       </select>
