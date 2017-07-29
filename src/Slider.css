@@ -1,0 +1,13 @@
+.Slider {
+  margin-bottom: 20px;
+}
+
+.Slider-input {
+  max-width: 400px;
+}
+
+@media screen and (max-width: 600px) {
+  .Slider-input {
+    max-width: 80%;
+  }
+}

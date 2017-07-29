@@ -9,7 +9,6 @@ const getControlsMetadata = (controls, appControls) => {
   return controlsMetadata;
 }
 
-
 class Device extends Component {
   constructor(props) {
     super(props);
@@ -98,10 +97,10 @@ class Device extends Component {
     const deviceMetadata = appState.deviceTypes.filter((item) => item.id === deviceType)[0];
     const controlsMetadata = this.getControlsMetadata();
     return (
-      <div className="Device">
+      <div className="Device page-container">
         <h2>{name}</h2>
         { deviceMetadata &&
-          deviceMetadata.type
+          <p><strong>Device Type: </strong>{deviceMetadata.type}</p>
         }
         { controlsMetadata.map((item, i) => {
           const Control = getControlComponent(item.type);

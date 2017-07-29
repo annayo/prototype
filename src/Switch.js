@@ -12,15 +12,15 @@ function Switch(props) {
   } = props;
 
   return (
-    <label>
-      <span>{name}</span>
+    <div className="Switch">
+      <label>{name}</label>
       <Toggle
         id={id}
         defaultChecked={checked}
         onChange={onChange}
         value={value}
       />
-    </label>
+    </div>
   );
 }
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import './Slider.css';
 
 function Slider(props) {
   const {
@@ -9,8 +10,9 @@ function Slider(props) {
   } = props;
 
   return (
-    <div>{props.name}
-      <input id={id} defaultValue={value} onChange={onChange} type="range" />
+    <div className="Slider">
+      <label>{props.name}</label>
+      <input className="Slider-input" id={id} defaultValue={value} onChange={onChange} type="range" />
     </div>
   );
 }

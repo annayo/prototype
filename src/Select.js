@@ -1,4 +1,5 @@
 import React from 'react';
+import './Select.css';
 
 function Select(props) {
   const {
@@ -9,7 +10,8 @@ function Select(props) {
   } = props;
 
   return (
-    <div>{props.name}
+    <div className="Select">
+      <label>{props.name}</label>
       <select id={id} defaultValue={value} onChange={onChange}>
         <option value="one">One</option>
         <option value="two">Two</option>

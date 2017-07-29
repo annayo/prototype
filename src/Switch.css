@@ -1,3 +1,7 @@
+.Switch {
+  margin-bottom: 20px;
+}
+
 /* https://raw.githubusercontent.com/instructure-react/react-toggle/master/style.css */
 .react-toggle {
   touch-action: pan-x;

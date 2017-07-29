@@ -3,12 +3,11 @@ import {
   Route,
   Link
 } from 'react-router-dom';
-import './Admin.css'
 
 const Admin = (props) => {
   return (
     <div className="Admin page-container">
-      <ul className="Admin-nav">
+      <ul className="sub-nav">
         {props.routes.map((route, i) => (
           <li key={i}><Link to={route.path}>Manage {route.name}</Link></li>
         ))}
