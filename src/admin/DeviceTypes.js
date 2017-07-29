@@ -51,9 +51,9 @@ class DeviceTypes extends Component {
       endpoint: inputs.endpoint.value,
       controlIDs: inputs.controlIDs.value.split(',')
     };
-    const itemIndex = this.props.appState.deviceTypes.
-                      map((item, i) => ({ id: item.id, index: i })).
-                      filter((item) => item.id === id)[0].index;
+    const itemIndex = this.props.appState.deviceTypes
+                      .map((item, i) => ({ id: item.id, index: i }))
+                      .filter((item) => item.id === id)[0].index;
 
     this.props.setAppState({
       deviceTypes: [...this.props.appState.deviceTypes.slice(0, itemIndex), item, ...this.props.appState.deviceTypes.slice(itemIndex + 1)]

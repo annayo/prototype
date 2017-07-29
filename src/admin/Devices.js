@@ -54,9 +54,9 @@ class Controls extends Component {
       deviceType: deviceType,
       slug: name.replace(/\s+/g, '-').toLowerCase()
     };
-    const itemIndex = this.props.appState.devices.
-                      map((item, i) => ({ id: item.id, index: i })).
-                      filter((item) => item.id === id)[0].index;
+    const itemIndex = this.props.appState.devices
+                      .map((item, i) => ({ id: item.id, index: i }))
+                      .filter((item) => item.id === id)[0].index;
 
     this.props.setAppState({
       devices: [...this.props.appState.devices.slice(0, itemIndex), item, ...this.props.appState.devices.slice(itemIndex + 1)]

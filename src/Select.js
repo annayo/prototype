@@ -11,7 +11,7 @@ function Select(props) {
 
   return (
     <div className="Select">
-      <label>{props.name}</label>
+      <label>{name}</label>
       <select id={id} defaultValue={value} onChange={onChange}>
         <option value="one">One</option>
         <option value="two">Two</option>

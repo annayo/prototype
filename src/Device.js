@@ -1,14 +1,6 @@
 import React, { Component } from 'react';
 import getControlComponent from './helpers/getControlComponent';
 
-const getControlsMetadata = (controls, appControls) => {
-  const controlsMetadata = appControls.filter((item, i) => {
-    return controls.filter((control, n) => item.id === control.id).length;
-  });
-
-  return controlsMetadata;
-}
-
 class Device extends Component {
   constructor(props) {
     super(props);
@@ -47,9 +39,9 @@ class Device extends Component {
       checked: checked
     };
 
-    const deviceControlIndex = this.props.appState.deviceControls.
-                              map((item, i) => ({ id: item.id, deviceID: item.deviceID, index: i})).
-                              filter((item) => item.deviceID === deviceID && item.id === id)[0].index;
+    const deviceControlIndex = this.props.appState.deviceControls
+                              .map((item, i) => ({ id: item.id, deviceID: item.deviceID, index: i}))
+                              .filter((item) => item.deviceID === deviceID && item.id === id)[0].index;
 
     this.props.setAppState({
       deviceControls: [...this.props.appState.deviceControls.slice(0, deviceControlIndex), control, ...this.props.appState.deviceControls.slice(deviceControlIndex + 1)]
@@ -84,18 +76,17 @@ class Device extends Component {
 
   render() {
     const {
-      appState,
-      match
+      appState
     } = this.props;
 
     const {
-      id,
       name,
       deviceType
     } = this.state;
 
     const deviceMetadata = appState.deviceTypes.filter((item) => item.id === deviceType)[0];
     const controlsMetadata = this.getControlsMetadata();
+
     return (
       <div className="Device page-container">
         <h2>{name}</h2>

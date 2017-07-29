@@ -11,7 +11,7 @@ function Slider(props) {
 
   return (
     <div className="Slider">
-      <label>{props.name}</label>
+      <label>{name}</label>
       <input className="Slider-input" id={id} defaultValue={value} onChange={onChange} type="range" />
     </div>
   );

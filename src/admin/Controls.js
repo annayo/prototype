@@ -46,9 +46,9 @@ class Controls extends Component {
       name: inputs.name.value,
       type: inputs.type.value
     };
-    const itemIndex = this.props.appState.controls.
-                      map((item, i) => ({ id: item.id, index: i })).
-                      filter((item) => item.id === id)[0].index;
+    const itemIndex = this.props.appState.controls
+                      .map((item, i) => ({ id: item.id, index: i }))
+                      .filter((item) => item.id === id)[0].index;
 
     this.props.setAppState({
       controls: [...this.props.appState.controls.slice(0, itemIndex), item, ...this.props.appState.controls.slice(itemIndex + 1)]
